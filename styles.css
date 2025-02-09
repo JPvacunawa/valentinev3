@@ -1,0 +1,108 @@
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    margin-top: 100px;
+    overflow: hidden;
+    background-color: #ffe4e1;
+  }
+  
+  .button-container {
+    position: relative;
+    display: inline-block;
+    width: 400px;
+    height: 300px;
+    border: 2px dashed #ccc;
+    background-color: #f0a7a7;
+  }
+  
+  button {
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    position: absolute;
+    background-color: #f0a7a7;
+  }
+  
+  #yesButton {
+    left: 30%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    transition: transform 0.3s ease;
+    background-color: #08a710;
+  }
+  
+  #noButton {
+    left: 70%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #ee3e3e;
+  }
+  
+  #lovePage {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #ffebef;
+    color: #d6336c;
+    text-align: center;
+    font-size: 36px;
+    padding-top: 20%;
+    animation: fadeIn 1.5s ease-in-out;
+  }
+  
+  #heart {
+    width: 100px;
+    height: 100px;
+    background-color: red;
+    position: relative;
+    margin: 0 auto 20px;
+    transform: rotate(-45deg);
+    animation: bounce 1.5s infinite ease-in-out;
+  }
+  
+  #heart::before,
+  #heart::after {
+    content: "";
+    width: 100px;
+    height: 100px;
+    background-color: red;
+    border-radius: 50%;
+    position: absolute;
+  }
+  
+  #heart::before {
+    top: -50px;
+    left: 0;
+  }
+  
+  #heart::after {
+    left: 50px;
+    top: 0;
+  }
+  
+  @keyframes bounce {
+    0%, 100% {
+      transform: rotate(-45deg) scale(1);
+    }
+    50% {
+      transform: rotate(-45deg) scale(1.2);
+    }
+  }
+  
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  
+  #message {
+    font-size: 24px;
+    color: #333;
+    margin-top: 20px;
+  }

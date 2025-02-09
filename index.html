@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Valentine</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <h1>Will you be my Valentine ?</h1>
+  <div class="button-container">
+    <button id="yesButton">Yes</button>
+    <button id="noButton">No</button>
+  </div>
+
+  <div id="lovePage">
+    <div id="heart"></div>
+    I love you 💖
+  </div>
+  
+  <div id="message"></div>
+
+  <script>
+    const noButton = document.getElementById("noButton");
+    const yesButton = document.getElementById("yesButton");
+    const lovePage = document.getElementById("lovePage");
+    const message = document.getElementById("message");
+
+    let messageIndex = 0;
+    const messages = ["Are you sure?", "Wehh Sure na?", "Ayaw mo?", "Sure na talaga?", "Ayaw mo tapon ko to", "Sige na", "Damot", "Sige na kasi", "Hays Sige na kasi"];
+
+    noButton.addEventListener("click", () => {
+      // Show the next message in the sequence
+      message.innerText = messages[messageIndex];
+
+      // Cycle through the message array
+      messageIndex = (messageIndex + 1) % messages.length;
+
+      // Move the "No" button to a random position within the container
+      const container = noButton.parentElement;
+      const containerRect = container.getBoundingClientRect();
+
+      // Generate random positions within the container
+      const randomTop = Math.random() * (containerRect.height - noButton.offsetHeight);
+      const randomLeft = Math.random() * (containerRect.width - noButton.offsetWidth);
+
+      // Move the button to the new position
+      noButton.style.top = `${randomTop}px`;
+      noButton.style.left = `${randomLeft}px`;
+
+      // Enlarge the "Yes" button when "No" button is clicked and keep it enlarged
+      const currentScale = parseFloat(yesButton.dataset.scale) || 1;
+      const newScale = currentScale + 0.2;
+      yesButton.style.transform = `translate(-50%, -50%) scale(${newScale})`;
+      yesButton.dataset.scale = newScale;
+    });
+
+    yesButton.addEventListener("click", () => {
+      // Show the love page
+      lovePage.style.display = "block";
+    });
+  </script>
+</body>
+</html>
